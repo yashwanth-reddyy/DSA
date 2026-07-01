@@ -6,16 +6,16 @@ class Solution {
       int sum =0;
       for(int i =0;i<nums.length;i++){
         sum+=nums[i];
-        if(y.containsKey(sum%k)){
-            count+=y.get(sum%k);
-        } 
-        if(y.containsKey(((sum%k)-k))){
-            count+=y.get(((sum%k)-k));
-        } 
-        if(y.containsKey(((sum%k)+k))){
-            count+=y.get(((sum%k)+k));
+        int rem =sum%k;
+        if(sum%k<0){
+            rem=k+sum%k;
         }
-        y.put(sum%k,y.getOrDefault(sum%k,0)+1);
+        if(y.containsKey(rem)){
+            count+=y.get(rem);
+        } 
+         y.put(rem,y.getOrDefault(rem,0)+1);
+
+       
       }
       return count;
         
