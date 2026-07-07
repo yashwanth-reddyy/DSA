@@ -8,11 +8,9 @@ class Solution {
             int x=n%10;
             if(x>0){
                 digit=digit+x*(int)Math.pow(10,base);
-                System.out.println(digit);
                 base++;
             }
             sum+=x;
-            System.out.println(sum);
             n/=10;
         }
         ans=sum*digit;
