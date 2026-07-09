@@ -11,17 +11,11 @@ class Solution {
      for(int i =1;i<intervals.length;i++){
        int start1 =intervals[i][0];
        int end1=intervals[i][1];
-       if(start1>=start&&start1<=end){
-        if(y.size()>0){
-            y.remove(y.size()-1);
-        }
+       if(start1<=end){
             int u =start>=start1?start1:start;
             int p=end1>=end?end1:end;
-            int ans1[]=new int[2];
-           ans1[0]=u;
-           ans1[1]=p;
+            y.get(y.size()-1)[1]=p;
            start=u;
-           y.add(ans1);
            end=p;
        }
        else{
