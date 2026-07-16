@@ -1,18 +1,18 @@
 class Solution {
     public long gcdSum(int[] nums) {
         int max=Integer.MIN_VALUE;
-        ArrayList<Integer> y = new ArrayList<>();
+        int prefix[]=new int[nums.length];
         for(int i =0;i<nums.length;i++){
             max=Math.max(max,nums[i]);
             int gcd=helper(nums[i],max);
-            y.add(gcd);
+            prefix[i]=gcd;
         }
         int k =0;
-        int l =y.size()-1;
+        int l =prefix.length-1;
         long ans1=0;
-        Collections.sort(y);
+        Arrays.sort(prefix);
         while(k<l){
-            ans1+=helper(y.get(k),y.get(l));
+            ans1+=helper(prefix[k],prefix[l]);
             k++;
             l--;
         }
