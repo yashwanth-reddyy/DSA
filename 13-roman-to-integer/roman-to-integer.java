@@ -1,29 +1,30 @@
 class Solution {
     public int romanToInt(String s) {
-        HashMap<Character,Integer> x = new HashMap<>();
-        x.put('I',1);
-        x.put('V',5);
-        x.put('X',10);
-        x.put('L',50);
-        x.put('C',100);
-        x.put('D',500);
-        x.put('M',1000);
         int ans=0;
-        for(int i=0;i<s.length();i++){
-            ans+=x.get(s.charAt(i));
-            if(i>0){
-            if(((s.charAt(i)=='V')||(s.charAt(i)=='X'))&&s.charAt(i-1)=='I'){
-                ans-=2;
-            }
-            else if(((s.charAt(i)=='L')||(s.charAt(i)=='C'))&&s.charAt(i-1)=='X'){
-                ans-=20;
-            }
-            else if(((s.charAt(i)=='D')||(s.charAt(i)=='M'))&&s.charAt(i-1)=='C'){
-                ans-=200;
-            }
-            }
+        int curr=0;
+        int prev=0;
+        for(int i=s.length()-1;i>=0;i--){
+            curr=helper(s.charAt(i));
+             if(prev>curr){
+                ans-=curr;
+             }
+             else{
+                ans+=curr;
+             } 
+             prev=curr;
         }
         return ans;
-        
+    }
+    public int helper(char a){
+        switch (a) {
+        case 'I': return 1;
+        case 'V': return 5;
+        case 'X': return 10;
+        case 'L': return 50;
+        case 'C': return 100;
+        case 'D': return 500;
+        case 'M': return 1000;
+        default: return 0;
+    }
     }
 }
