@@ -4,30 +4,25 @@ class Solution {
        for(int i =0;i<s.length();i++){
         y.put(s.charAt(i),y.getOrDefault(s.charAt(i),0)+1);
        }
-       HashSet<Integer> q= new HashSet<>();
-       for(char a :y.keySet()){
-           q.add(y.get(a));
+       List<Character> e[]=new ArrayList[s.length()+1];
+       for(char a:y.keySet()){
+        int u =y.get(a);
+        if(e[u]==null){
+            e[u]=new ArrayList<>();
+        }
+        e[u].add(a);
        }
-       int arr[]=new int[q.size()];
-       int o=0;
-       for(int i:q){
-        arr[o]=i;
-        o++;
-       }
-       Arrays.sort(arr);
        StringBuilder sb = new StringBuilder();
-       int j =arr.length-1;
-       while(sb.length()<s.length()){
-        int max= arr[j];
-            for(char a :y.keySet()){
-              if(y.get(a)==max){
-                for(int p =0;p<max;p++){
+       for(int h =e.length-1;h>=0;h--){
+           if(e[h]!=null){
+            for(char a:e[h]){
+                for(int l=0;l<h;l++){
                     sb.append(a);
                 }
-              }
-       }
-        j--;
+            }
+           }
        }
        return sb.toString();
+
     }
 }
