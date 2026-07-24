@@ -53,9 +53,12 @@ class Solution {
        ListNode dummy =new ListNode(-1);
        ListNode u=dummy;
        for(int s =0;s<y.size();s++){
-        ListNode h =new ListNode(y.get(s).val);
+        ListNode h =y.get(s);
         dummy.next=h;
         dummy=dummy.next;
+        if(s==y.size()-1){
+            dummy.next=null;
+        }
        }return u.next;
     }
 }
