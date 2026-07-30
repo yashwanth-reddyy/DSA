@@ -8,33 +8,19 @@ class Solution {
         int y =0;
         int l =w.length-1;
         for(int i =0;i<a.length;i++){
-            while(a[i]>0){
-                if(a[i]>=2){
-                char letter = (char) (i + 'a');
+            char letter = (char) (i + 'a');
+            while(a[i]>=2){
                 w[y]=letter;
-                a[i]--;
-                y++;
                 w[l]=letter;
+                a[i]-=2;
+                y++;
                 l--;
-                a[i]--;
             }
             if(a[i]==1){
-                int q=s.length()/2;
-                char letter = (char) (i + 'a');
-                w[q]=letter;
-                a[i]--;
-                break;
-            }
+                w[s.length()/2]=letter;
             }
         }
         
-       
-        
-       
-        StringBuilder sb = new StringBuilder();
-         for(int i =0;i<w.length;i++){
-            sb.append(w[i]);
-         }
-        return sb.toString();
+        return new String(w);
     }
 }
