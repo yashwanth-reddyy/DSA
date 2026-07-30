@@ -4,7 +4,6 @@ class Solution {
         for(int i =0;i<s.length();i++){
             a[s.charAt(i)-'a']++;
         }
-        System.out.println(Arrays.toString(a));
         char w[]=new char[s.length()];
         int y =0;
         int l =w.length-1;
