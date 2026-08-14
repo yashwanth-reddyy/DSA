@@ -1,63 +1,28 @@
 class Solution {
     public int garbageCollection(String[] garbage, int[] travel) {
-      int m[]=new int[garbage.length];
-      int p[]=new int[garbage.length];
-      int g[]=new int[garbage.length];
-      int prefix[]=new int[travel.length+1];
-      for(int i =1;i<=travel.length;i++){
-        prefix[i]=prefix[i-1]+travel[i-1];
-      }
-      for(int i =0;i<garbage.length;i++){
-        StringBuilder sb = new StringBuilder(garbage[i]);
-        int j =0;
-        while(j<sb.length()){
-            char a=sb.charAt(j);
-            if(a=='G'){
-                g[i]++;
-            }
-            else if(a=='P'){
-                p[i]++;
-            }
-            else{
-                m[i]++;
-            }
-            j++;
-        }
-      }
       int ans=0;
-     int start =-1;
-     for(int i =0;i<garbage.length;i++){
-        if(g[i]>0&&start==-1){
-            ans=ans+(prefix[i])+g[i];
-            start=i;
+      int lastG=-1;
+      int lastP=-1;
+      int lastM=-1;
+      for(int i =0;i<garbage.length;i++){
+        ans+=garbage[i].length();
+        if(garbage[i].indexOf('G') != -1) lastG = i;
+            if (garbage[i].indexOf('P') != -1) lastP = i;
+            if (garbage[i].indexOf('M') != -1) lastM = i;
         }
-        else if(g[i]>0&&start!=-1){
-            ans=ans+(prefix[i]-prefix[start])+g[i];
-            start=i;
+      int current=0;
+      for(int i =0;i<travel.length;i++){
+        current+=travel[i];
+        if(lastG==(i+1)){
+            ans+=current;
         }
-     }
-      int start1 =-1;
-     for(int i =0;i<garbage.length;i++){
-        if(p[i]>0&&start1==-1){
-            ans=ans+(prefix[i])+p[i];
-            start1=i;
+        if(lastP==(i+1)){
+            ans+=current;
         }
-        else if(p[i]>0&&start1!=-1){
-            ans=ans+(prefix[i]-prefix[start1])+p[i];
-            start1=i;
+        if(lastM==(i+1)){
+            ans+=current;
         }
-     }
-     int start2 =-1;
-     for(int i =0;i<garbage.length;i++){
-        if(m[i]>0&&start2==-1){
-            ans=ans+(prefix[i])+m[i];
-            start2=i;
-        }
-        else if(m[i]>0&&start2!=-1){
-            ans=ans+(prefix[i]-prefix[start2])+m[i];
-            start2=i;
-        }
-     }
-     return ans;
+      }
+      return ans;
     }
 }
