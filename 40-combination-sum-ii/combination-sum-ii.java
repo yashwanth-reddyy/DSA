@@ -9,7 +9,7 @@ class Solution {
      return t;
     }
     public void helper(int[] candidates,int target,int sum,List<Integer>y,int i){
-        System.out.println(y);
+      
         if(sum>target){
             return;
         }
