@@ -27,11 +27,9 @@ class Solution {
                 for(int k =0;k<words[i].length();k++){
                    l1[words[i].charAt(k)-'a']++;
                 }
-                 helper(words,letters,score,l1,i+1,sum1);
             }
-            else{
+           
                 helper(words,letters,score,l1,i+1,sum1);
-            }
     }
     public boolean isValid(String word,int score[],int l1[],int sum1){
         int a[]=new int[26];
