@@ -1,11 +1,9 @@
 class Solution {
-    boolean arr[][];
     int sum=0;
     public int numIslands(char[][] grid) {
-        arr=new boolean[grid.length][grid[0].length];
         for(int i =0;i<grid.length;i++){
             for(int j =0;j<grid[0].length;j++){
-                if(grid[i][j]=='1'&&(!arr[i][j])){
+                if(grid[i][j]=='1'){
                     sum++;
                     helper(grid,i,j);
                 }
@@ -20,14 +18,11 @@ class Solution {
         if(j<0||j>=grid[0].length){
             return;
         }
-        if(arr[i][j]){
-            return;
-        }
         if(grid[i][j]=='0'){
             return;
         }
         if(grid[i][j]=='1'){
-            arr[i][j]=true;
+           grid[i][j]='0';
         }
         helper(grid,i+1,j);
         helper(grid,i,j+1);
