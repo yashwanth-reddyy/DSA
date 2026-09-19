@@ -2,13 +2,13 @@ class Solution {
     public List<Integer> eventualSafeNodes(int[][] graph) {
         ArrayList<Integer> t= new ArrayList<>();
         int a[]=new int[graph.length];
+         int arr[]=new int[graph.length];
         for(int i =0;i<graph.length;i++){
             if(graph[i].length==0){
                 t.add(i);
             }
             else{
             if(a[i]==0){
-            int arr[]=new int[graph.length];
             boolean b=dfs(graph,arr,i,a);
             if(b){
                 t.add(i);
