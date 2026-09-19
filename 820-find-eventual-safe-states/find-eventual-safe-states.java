@@ -42,6 +42,7 @@ class Solution {
              arr[i]=1;
              boolean t=dfs(graph,arr,graph[i][j],a);
              if(!t){
+                a[i]=1;
               return false;
               }
               arr[i]=0;
