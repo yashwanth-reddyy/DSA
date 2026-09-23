@@ -19,7 +19,6 @@ class Solution {
                     b=true;
                     break;
                 }
-                System.out.println(t);
                }
             }
             if(b){
