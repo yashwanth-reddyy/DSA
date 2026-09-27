@@ -9,7 +9,6 @@ class Solution {
                     count++;
                     sb.append(s1.pop());
                 }
-                 System.out.println(sb);
                 s1.pop();
                 for(int j =0;j<count;j++){
                      s1.push(sb.charAt(0));
