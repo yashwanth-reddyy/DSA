@@ -1,25 +1,32 @@
 class Solution {
-    boolean b[];
     public int findCircleNum(int[][] isConnected) {
-     b=new boolean[isConnected.length];
-     int count=0;
-     Queue<Integer> t = new LinkedList<>();
-     for(int i =0;i<isConnected.length;i++){
-        if(!b[i]){
-            count++;
-            b[i]=true;
-            t.add(i);
-            while(!t.isEmpty()){
-                int r=t.poll();
-                for(int j =0;j<isConnected.length;j++){
-                    if(isConnected[r][j]==1&&b[j]==false){
-                        b[j]=true;
-                        t.add(j);
-                    }
-                }
+       List<List<Integer>> t = new ArrayList<>();
+       for(int i =0;i<isConnected.length;i++){
+         t.add(new ArrayList<>());
+       }
+       for(int i =0;i<isConnected.length;i++){
+        for(int j=0;j<isConnected[i].length;j++){
+            if(i!=j&&isConnected[i][j]==1){
+                t.get(i).add(j);
             }
         }
+       }
+       int vis[]=new int[t.size()];
+       int count=0;
+       for(int i =0;i<t.size();i++){
+        if(vis[i]==0){
+        count++;
+        dfs(vis,t,i);
+        }
+       }
+       return count;
+    }
+    public void dfs( int vis[],List<List<Integer>> t,int i){
+     vis[i]=1;
+     for(int j =0;j<t.get(i).size();j++){
+        if(vis[t.get(i).get(j)]==0){
+            dfs(vis,t,t.get(i).get(j));
+        }
      }
-     return count;
     }
 }
