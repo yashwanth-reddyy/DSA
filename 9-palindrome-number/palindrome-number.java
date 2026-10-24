@@ -17,8 +17,7 @@ class Solution {
             sum+=n;
             x/=10;
         }
-        System.out.println(h);
-        System.out.println(sum);
+      
         return h==sum;
     }
 }
